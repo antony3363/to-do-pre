@@ -1,4 +1,4 @@
-// Список начальных задач
+
 const items = [
   "Сделать проектную работу",
   "Полить цветы",
@@ -9,13 +9,13 @@ const items = [
 ];
 
 
-// Элементы страницы
+
 const listElement = document.querySelector(".to-do__list");
 const formElement = document.querySelector(".to-do__form");
 const inputElement = document.querySelector(".to-do__input");
 
 
-// Загрузка списка задач
+
 function loadTasks() {
 
   const storedTasks = localStorage.getItem('tasks');
@@ -27,7 +27,7 @@ function loadTasks() {
 }
 
 
-// Сохранение задач в локальное хранилище
+
 function saveTasks(taskList) {
 
   localStorage.setItem('tasks', JSON.stringify(taskList));
@@ -35,7 +35,7 @@ function saveTasks(taskList) {
 }
 
 
-// Получение задач из DOM
+
 function getTasksFromDOM() {
 
   const taskElements = document.querySelectorAll('.to-do__item-text');
@@ -48,7 +48,7 @@ function getTasksFromDOM() {
 }
 
 
-// Создание элемента задачи
+
 function createItem(taskContent) {
 
   const itemTemplate = document.getElementById("to-do__item-template");
@@ -60,7 +60,7 @@ function createItem(taskContent) {
   taskTextElement.innerHTML = taskContent;
 
 
-  // Обработчик удаления задачи
+  
   deleteBtn.addEventListener('click', () => {
     itemClone.remove();
     const currentTasks = getTasksFromDOM();
@@ -68,7 +68,7 @@ function createItem(taskContent) {
   });
 
 
-  // Обработчик копирования задачи
+  
   duplicateBtn.addEventListener('click', () => {
     const duplicatedContent = taskTextElement.innerHTML;
     const duplicatedItem = createItem(duplicatedContent);
@@ -78,14 +78,14 @@ function createItem(taskContent) {
   });
 
 
-  // Обработчик редактирования задачи
+  
   editBtn.addEventListener('click', () => {
     taskTextElement.setAttribute('contenteditable', 'true');
     taskTextElement.focus();
   });
 
 
-  // Обработчик сохранения после редактирования
+  
   taskTextElement.addEventListener('blur', () => {
     taskTextElement.setAttribute('contenteditable', 'false');
     const currentTasks = getTasksFromDOM();
@@ -98,7 +98,7 @@ function createItem(taskContent) {
 }
 
 
-// Обработчик отправки формы
+
 formElement.addEventListener('submit', (event) => {
 
   event.preventDefault();
@@ -114,7 +114,7 @@ formElement.addEventListener('submit', (event) => {
 });
 
 
-// Загрузка и отображение задач при загрузке страницы
+
 const initialTasks = loadTasks();
 initialTasks.forEach(task => {
 
