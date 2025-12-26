@@ -18,7 +18,6 @@ function loadTasks() {
 	} else {
 		return items;
 	}
-	
 }
 
 function handleDeleteButtonClick(clone) {
